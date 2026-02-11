@@ -1,68 +1,170 @@
-let tasks = [
-  { id: 1, title: "Learn JS", completed: false },
-  { id: 2, title: "Build App", completed: true },
-];
+// let tasks = [
+//   { id: 1, title: "Learn JS", completed: false },
+//   { id: 2, title: "Build App", completed: true },
+// ];
 
-const container = document.querySelector(".container");
+// const container = document.querySelector(".container");
+// export const addTask = () => {
+//   container.innerHTML = "";
+//   let card = document.createElement("article");
+//   card.innerHTML = `
+//     <header class="bg-gray-200 h-16 flex items-center justify-between px-4 shadow-sm">
+
+//         <!-- Back Button -->
+//         <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 hover:bg-gray-400 transition">
+//         <svg xmlns="http://www.w3.org/2000/svg"
+//             class="w-5 h-5 text-gray-700"
+//             fill="none"
+//             viewBox="0 0 24 24"
+//             stroke="currentColor">
+//             <path stroke-linecap="round"
+//                 stroke-linejoin="round"
+//                 stroke-width="2"
+//                 d="M15 19l-7-7 7-7" />
+//         </svg>
+//         </button>
+
+//         <!-- Title -->
+//         <h1 class="text-lg font-semibold text-gray-800">
+//         Activity
+//         </h1>
+
+//         <!-- Right Icon Button -->
+//         <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 hover:bg-gray-400 transition">
+//         <svg xmlns="http://www.w3.org/2000/svg"
+//             class="w-5 h-5 text-gray-700"
+//             fill="none"
+//             viewBox="0 0 24 24"
+//             stroke="currentColor">
+//             <path stroke-linecap="round"
+//                 stroke-linejoin="round"
+//                 stroke-width="2"
+//                 d="M8 7V3m8 4V3m-9 8h10m-11 9h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2z" />
+//         </svg>
+//         </button>
+
+//     </header>
+
+//     <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-96">
+//       <h1 class="text-white text-2xl font-bold mb-4 text-center">My To Do List</h1>
+//       <div class="flex gap-2">
+//         <input id="taskInput" class="flex-1 p-2 rounded-lg outline-none" placeholder="Add task...">
+//         <button id="addBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Add</button>
+//       </div>
+//       </div>
+//       <ul id="taskList" class="mt-4 "></ul>
+
+//         <div class="w-100 flex justify-center">
+//             <div class="relative w-56 h-56 flex items-center justify-center ">
+
+//                 <div class="absolute inset-0 rounded-full border-[14px] border-blue-700"></div>
+
+//                 <span class="text-3xl font-medium text-blue-700">
+//                 25:00
+//                 </span>
+
+//             </div>
+//         </div>
+//                 <footer class="bg-gray-200 h-16 flex items-center justify-between px-4 fixed bottom-0 w-full shadow-sm">
+
+//                         <!-- Back Button -->
+//                         <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 hover:bg-gray-400 transition">
+//                         <svg xmlns="http://www.w3.org/2000/svg"
+//                             class="w-5 h-5 text-gray-700"
+//                             fill="none"
+//                             viewBox="0 0 24 24"
+//                             stroke="currentColor">
+//                             <path stroke-linecap="round"
+//                                 stroke-linejoin="round"
+//                                 stroke-width="2"
+//                                 d="M15 19l-7-7 7-7" />
+//                         </svg>
+//                         </button>
+
+//                         <!-- Title -->
+//                         <h1 class="text-lg font-semibold text-gray-800">
+//                         Activity
+//                         </h1>
+
+//                         <!-- Right Icon Button -->
+//                         <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 hover:bg-gray-400 transition">
+//                         <svg xmlns="http://www.w3.org/2000/svg"
+//                             class="w-5 h-5 text-gray-700"
+//                             fill="none"
+//                             viewBox="0 0 24 24"
+//                             stroke="currentColor">
+//                             <path stroke-linecap="round"
+//                                 stroke-linejoin="round"
+//                                 stroke-width="2"
+//                                 d="M8 7V3m8 4V3m-9 8h10m-11 9h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2z" />
+//                         </svg>
+//                         </button>
+
+//                     </footer>
+
+//     </div>
+
+//   `;
+//   container.appendChild(card);
+//   tasks.forEach((task) => {
+//     const li = document.createElement("li");
+//     li.textContent = task.title;
+//     taskList.appendChild(li);
+//   });
+//   const addBtn = document.getElementById("addBtn");
+//   const taskInput = document.getElementById("taskInput");
+//   addBtn.addEventListener("click", () => {
+//     const value = taskInput.value.trim();
+//     if (!value) return;
+//     const li = document.createElement("li");
+//     li.textContent = value;
+//     const taskList = document.getElementById("taskList");
+//     taskList.appendChild(li);
+//     let data = {
+//       id: tasks.length + 1,
+//       title: value,
+//       completed: false,
+//     };
+//     tasks.push(data);
+//     // taskInput.value = "";
+//   });
+// };
+// export function navigateToNewPage() {
+//   // Use window.location.href to navigate to a new page
+//   window.location.href = "newpage.html";
+// }
+
+import {
+  createHeader,
+  createBody,
+  createFooter,
+  addTaskToList,
+  //   clearInputField,
+} from "./ui.js";
 export const addTask = () => {
+  const container = document.querySelector(".container");
   container.innerHTML = "";
-  let card = document.createElement("article");
-  card.innerHTML = `
-    <header class="bg-gray-200 shadow-md w-81">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <nav class="space-x-6 flex justify-between w-full rounded-full">
-          <a href="#" class="hover:text-white transition">Home</a>
-          <a href="#" class="hover:text-white transition">Tasks</a>
-        </nav>
-      </div>
-    </header>
 
-    <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-96">
-      <h1 class="text-white text-2xl font-bold mb-4 text-center">My To Do List</h1>
-      <div class="flex gap-2">
-        <input id="taskInput" class="flex-1 p-2 rounded-lg outline-none" placeholder="Add task...">
-        <button id="addBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Add</button>
-      </div>
-      <ul id="taskList" class="mt-4"></ul>
-    </div>
-  `;
-  container.appendChild(card);
-  //   tasks.forEach((task) => {
-  //     const li = document.createElement("li");
-  //     const taskList = document.getElementById("taskList");
+  container.innerHTML += createHeader();
+  container.innerHTML += createBody();
+  container.innerHTML += createFooter();
 
-  //     li.className =
-  //       "bg-purple-300 rounded-full flex items-center justify-between px-4 py-2 mb-2 cursor-pointer hover:bg-purple-400 transition";
+  const tasks = [
+    { id: 1, title: "Learn JS", completed: false },
+    { id: 2, title: "Build App", completed: true },
+  ];
 
-  //     li.innerHTML = `
-  //         <span class="text-white font-medium">${task.title}</span>
-  //         <button class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow">
-  //             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800" viewBox="0 0 20 20" fill="currentColor">
-  //                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-  //             </svg>
-  //         </button>
-  //     `;
-  //     taskList.appendChild(li);
-  //   });
   tasks.forEach((task) => {
-    const li = document.createElement("li");
-    li.textContent = task.title;
-    taskList.appendChild(li);
+    addTaskToList(task.title);
   });
+
   const addBtn = document.getElementById("addBtn");
   const taskInput = document.getElementById("taskInput");
-  //   const li = document.createElement("li");
-  //   taskList.appendChild(li);
 
   addBtn.addEventListener("click", () => {
-    const value = taskInput.value.trim();
-    if (!value) return;
-
-    const li = document.createElement("li");
-    li.textContent = value;
-    taskList.appendChild(li);
-
-    tasks.push({ id: tasks.length + 1, title: value, completed: false });
-    taskInput.value = "";
+    const taskTitle = taskInput.value.trim();
+    if (!taskTitle) return;
+    addTaskToList(taskTitle);
+    clearInputField();
   });
 };
