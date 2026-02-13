@@ -101,27 +101,26 @@ export const profil = () => {
       </div>
     </div>
 
-    <!-- To-Do List Header -->
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-lg font-medium text-gray-700">My Tasks</h2>
       <button class="bg-indigo-500 text-white px-3 py-1 rounded-lg hover:bg-indigo-600 transition">+ Add</button>
     </div>
 
-    <!-- To-Do List -->
     <ul class="space-y-3">
       <li class="flex items-center justify-between bg-gray-100 p-3 rounded-lg shadow-sm">
         <span class="text-gray-700">Learn JavaScript</span>
         <input type="checkbox" class="w-5 h-5 accent-indigo-500">
       </li>
-      <li class="flex items-center justify-between bg-gray-100 p-3 rounded-lg shadow-sm">
-        <span class="text-gray-700 line-through">Build App</span>
-        <input type="checkbox" checked class="w-5 h-5 accent-indigo-500">
-      </li>
-      <li class="flex items-center justify-between bg-gray-100 p-3 rounded-lg shadow-sm">
-        <span class="text-gray-700">Write Blog Post</span>
-        <input type="checkbox" class="w-5 h-5 accent-indigo-500">
-      </li>
     </ul>
 
   </div>`;
+};
+export const TASK = () => {
+  return `<div class="flex justify-between items-center mb-4">
+      <h2 class="text-gray-700 font-semibold">Recent Tasks</h2>
+      <button class="text-gray-500 text-sm">See all</button>
+    </div>
+
+    <!-- Task List -->
+    <ul id="taskList" class="space-y-3"></ul>`;
 };

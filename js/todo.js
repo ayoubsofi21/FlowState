@@ -146,13 +146,17 @@ const tasks = [
 ];
 export const displayTasks = () => {
   const taskList = document.querySelector("#taskList");
-
   taskList.innerHTML = ""; // clear before render
 
   tasks.forEach((task) => {
     const li = document.createElement("li");
-    li.textContent = task.title;
-    li.className = "bg-gray-200 p-2 my-2 rounded";
+    li.className =
+      "flex justify-between items-center bg-purple-300 text-white p-4 rounded-2xl mb-2";
+
+    li.innerHTML = `
+      <span class="font-semibold">${task.title}</span>
+      <span>${task.completed ? "✅" : "⏳"}</span>
+    `;
     taskList.appendChild(li);
   });
 };
@@ -161,7 +165,8 @@ export const addTask = () => {
   const addBtn = document.getElementById("addBtn");
   const taskInput = document.getElementById("taskInput");
 
-  addBtn.addEventListener("click", () => {
+  addBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     const taskTitle = taskInput.value.trim();
     if (!taskTitle) return;
 
@@ -172,11 +177,12 @@ export const addTask = () => {
     };
 
     tasks.push(newTask); // update data
-    // displayTasks(); // re-render UI
+    // console.log(tasks);
+    displayTasks(); // re-render UI
     taskInput.value = ""; // clear input
   });
 };
 
-// export const clearInputField = () => {
-//   document.getElementById("taskInput").value = "";
-// };
+export const clearInputField = () => {
+  document.getElementById("taskInput").value = "";
+};
