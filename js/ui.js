@@ -37,7 +37,7 @@ export const createHeader = () => {
   `;
 };
 
-export const createBody = () => {
+export function createBody() {
   return `
   <div class='flex flex-col w-full items-center justify-center '>
   
@@ -60,7 +60,7 @@ export const createBody = () => {
       </div>
 </div>
   `;
-};
+}
 
 export const createFooter = () => {
   return `
