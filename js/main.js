@@ -1,4 +1,5 @@
 import { displayTasks, addTask } from "./todo.js";
+import { startTimer, stopTimer } from "./timer.js";
 import { createHeader, createBody, createFooter, profil } from "./ui.js";
 
 let container;
@@ -23,6 +24,10 @@ const goHome = () => {
   //   displayTasks("taskList");
   addTask();
   addEvents();
+  // use each function for stop or start promodo tasks to promodo pages
+  document.getElementById("startTimer")?.addEventListener("click", startTimer);
+
+  document.getElementById("stopTimer")?.addEventListener("click", stopTimer);
 };
 
 const goProfile = () => {

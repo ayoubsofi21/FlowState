@@ -51,14 +51,32 @@ export function createBody() {
 
      
     </div>
-      <ul id="taskList" class="mt-4 "></ul>
-     <div class="relative w-56 h-56 flex items-center justify-center">
-          <div class="absolute inset-0 rounded-full border-[14px] border-blue-700"></div>
-          <span class="text-3xl font-medium text-blue-700">
-            25:00
-          </span>
-        </div>
-      </div>
+      <ul id="taskList" class="mt-4"></ul>
+     <div class="flex flex-col items-center mt-16">
+
+  <div class="relative w-56 h-56 flex items-center justify-center">
+    <div class="absolute inset-0 rounded-full border-[14px] border-blue-700"></div>
+
+    <span id="timerDisplay"
+          class="text-3xl font-medium text-blue-700">
+      25:00
+    </span>
+  </div>
+
+  <div class="flex gap-4 mt-6">
+    <button id="startTimer"
+            class="bg-green-500 text-white px-6 py-2 rounded-lg">
+      START
+    </button>
+
+    <button id="stopTimer"
+            class="bg-red-500 text-white px-6 py-2 rounded-lg">
+      STOP
+    </button>
+  </div>
+
+</div>
+
 </div>
   `;
 }
@@ -104,7 +122,6 @@ export const profil = () => {
 
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-lg font-medium text-gray-700">My Tasks</h2>
-      <button  class="bg-indigo-500 text-white px-3 py-1 rounded-lg hover:bg-indigo-600 transition">+ Add</button>
     </div>
         <ul id="taskList" class="space-y-3"></ul>
 

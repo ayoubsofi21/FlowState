@@ -140,6 +140,7 @@
 //   taskList.appendChild(li);
 //   li.textContent = taskTitle;
 // };
+import { startTimer, stopTimer } from "./timer.js";
 const tasks = [
   { id: 1, title: "Learn JS", completed: false },
   { id: 2, title: "Build App", completed: true },
@@ -155,12 +156,21 @@ export const displayTasks = (targetId = "taskList") => {
       "flex justify-between items-center bg-purple-300 text-white p-4 rounded-2xl mb-2";
 
     li.innerHTML = `
+    
       <span class="font-semibold">${task.title}</span>
-      <span>${task.completed ? "✅" : "⏳"}</span>
-    `;
+      <div class="flex  justify-between items-between gap-5">
+        <button class="start-btn text-green-500">▶️</button>
+        <button class="stop-btn text-red-500">⏹️</button>
+      </div>
+      `;
+    const startBtn = li.querySelector(".start-btn");
+    const stopBtn = li.querySelector(".stop-btn");
+    startBtn.addEventListener("click", startTimer);
+    stopBtn.addEventListener("click", stopTimer);
     taskList.appendChild(li);
   });
 };
+// <span>${task.completed ? "✅" : "⏳"}</span>
 
 export const addTask = () => {
   const addBtn = document.querySelector("#addBtn");
@@ -176,7 +186,7 @@ export const addTask = () => {
       regexMessage.style.color = "red";
       return;
     }
-     regexMessage.textContent = "Tâche ajoutée avec succès !";
+    regexMessage.textContent = "Tâche ajoutée avec succès !";
     regexMessage.style.color = "green";
     if (!taskTitle) return;
 
