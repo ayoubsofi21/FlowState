@@ -109,7 +109,7 @@ export const createFooter = () => {
   `;
 };
 export const profil = () => {
-  return `<div  class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6">
+  return `<div  class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 mb-12">
 
     <!-- Profile Section -->
     <div class="flex items-center space-x-4 mb-6">
@@ -119,7 +119,9 @@ export const profil = () => {
         <p class="text-gray-500 text-sm">Productivity Enthusiast</p>
       </div>
     </div>
-
+    <div class="inline-block bg-white rounded-xl font-xxl shadow-md px-8 py-4 text-center text-lg font-medium cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-transform w-full">
+      Start Your Day <br> & Be Productive ✌️
+    </div>
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-lg font-medium text-gray-700">My Tasks</h2>
     </div>

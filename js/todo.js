@@ -141,10 +141,12 @@
 //   li.textContent = taskTitle;
 // };
 import { startTimer, stopTimer } from "./timer.js";
-const tasks = [
-  { id: 1, title: "Learn JS", completed: false },
-  { id: 2, title: "Build App", completed: true },
-];
+import { getTasks } from "./storage.js";
+let tasks = getTasks();
+// const tasks = [
+//   { id: 1, title: "Learn JS", completed: false },
+//   { id: 2, title: "Build App", completed: true },
+// ];
 export const displayTasks = (targetId = "taskList") => {
   const taskList = document.getElementById(targetId);
   if (!taskList) return;
@@ -161,6 +163,7 @@ export const displayTasks = (targetId = "taskList") => {
       <div class="flex  justify-between items-between gap-5">
         <button class="start-btn text-green-500">▶️</button>
         <button class="stop-btn text-red-500">⏹️</button>
+        <button class="delete-btn text-red-500">🗑️</button>
       </div>
       `;
     const startBtn = li.querySelector(".start-btn");
@@ -197,6 +200,8 @@ export const addTask = () => {
     };
 
     tasks.push(newTask);
+    // addTaskToStorage(newTask); // <-- Sauvegarde dans localStorage
+    displayTasks();
     // console.log(tasks);
     // displayTasks();
     taskInput.value = ""; // clear input
