@@ -1,31 +1,35 @@
-// import { createHeader, createBody, createFooter, profil } from "./ui.js";
-// export const functionExport = () => {
-//   function addEvents() {
-//     const home = document.getElementById("home");
-//     const profi = document.getElementById("profil");
+import { displayTasks, addTask } from "./todo.js";
+import { createHeader, createBody, createFooter, profil } from "./ui.js";
 
-//     home.addEventListener("click", goHome);
-//     profi.addEventListener("click", goProfile);
-//   }
-//   function goHome() {
-//     container.innerHTML = `
-//     ${createHeader()}
-//     ${createBody()}
-//     ${createFooter()}
-//   `;
-//     addEvents();
-//     displayTasks();
-//     addTask();
-//   }
+let container;
 
-//   function goProfile() {
-//     container.innerHTML = `
-//     ${profil()}
-//     ${createFooter()}
-    
-//   `;
-//     addEvents();
-//   }
-//   goHome();
-//   //   addEvents();
-// };
+export const initNavigation = (rootContainer) => {
+  container = rootContainer;
+  goHome();
+};
+
+const addEvents = () => {
+  document.getElementById("home")?.addEventListener("click", goHome);
+  document.getElementById("profil")?.addEventListener("click", goProfile);
+};
+
+const goHome = () => {
+  container.innerHTML = `
+    ${createHeader()}
+    ${createBody()}
+    ${createFooter()}
+
+  `;
+  //   displayTasks("taskList");
+  addTask();
+  addEvents();
+};
+
+const goProfile = () => {
+  container.innerHTML = `
+    ${profil()}
+    ${createFooter()}
+  `;
+  displayTasks("taskList");
+  addEvents();
+};

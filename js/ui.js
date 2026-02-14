@@ -46,7 +46,8 @@ export function createBody() {
       <div class="flex gap-2">
         <input id="taskInput" class="flex-1 p-2 rounded-lg outline-none" placeholder="Add task...">
         <button id="addBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Add</button>
-      </div>
+        </div>
+        <div class='regexMessage'></div>
 
      
     </div>
@@ -94,7 +95,7 @@ export const profil = () => {
 
     <!-- Profile Section -->
     <div class="flex items-center space-x-4 mb-6">
-      <img src="https://via.placeholder.com/60" alt="Profile" class="w-16 h-16 rounded-full border-2 border-indigo-500">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLn2vN-qAufnhM8t2e4OkZ6-m3Md6_Gk9B7g&s" alt="Profile" class="w-16 h-16 rounded-full border-2 border-indigo-500">
       <div>
         <h1 class="text-xl font-semibold text-gray-800">Ayoub Sofi</h1>
         <p class="text-gray-500 text-sm">Productivity Enthusiast</p>
@@ -103,24 +104,18 @@ export const profil = () => {
 
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-lg font-medium text-gray-700">My Tasks</h2>
-      <button class="bg-indigo-500 text-white px-3 py-1 rounded-lg hover:bg-indigo-600 transition">+ Add</button>
+      <button  class="bg-indigo-500 text-white px-3 py-1 rounded-lg hover:bg-indigo-600 transition">+ Add</button>
     </div>
-
-    <ul class="space-y-3">
-      <li class="flex items-center justify-between bg-gray-100 p-3 rounded-lg shadow-sm">
-        <span class="text-gray-700">Learn JavaScript</span>
-        <input type="checkbox" class="w-5 h-5 accent-indigo-500">
-      </li>
-    </ul>
+        <ul id="taskList" class="space-y-3"></ul>
 
   </div>`;
 };
-export const TASK = () => {
-  return `<div class="flex justify-between items-center mb-4">
-      <h2 class="text-gray-700 font-semibold">Recent Tasks</h2>
-      <button class="text-gray-500 text-sm">See all</button>
-    </div>
+// export const TASK = () => {
+//   return `<div class="flex justify-between items-center mb-4">
+//       <h2 class="text-gray-700 font-semibold">Recent Tasks</h2>
+//       <button class="text-gray-500 text-sm">See all</button>
+//     </div>
 
-    <!-- Task List -->
-    <ul id="taskList" class="space-y-3"></ul>`;
-};
+//     <!-- Task List -->
+//     <ul id="taskList" class="space-y-3"></ul>`;
+// };

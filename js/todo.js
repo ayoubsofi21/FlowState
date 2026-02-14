@@ -144,8 +144,9 @@ const tasks = [
   { id: 1, title: "Learn JS", completed: false },
   { id: 2, title: "Build App", completed: true },
 ];
-export const displayTasks = () => {
-  const taskList = document.querySelector("#taskList");
+export const displayTasks = (targetId = "taskList") => {
+  const taskList = document.getElementById(targetId);
+  if (!taskList) return;
   taskList.innerHTML = ""; // clear before render
 
   tasks.forEach((task) => {
@@ -162,12 +163,21 @@ export const displayTasks = () => {
 };
 
 export const addTask = () => {
-  const addBtn = document.getElementById("addBtn");
+  const addBtn = document.querySelector("#addBtn");
+  const regexMessage = document.querySelector(".regexMessage");
   const taskInput = document.getElementById("taskInput");
 
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const taskTitle = taskInput.value.trim();
+    const regex = /^[a-zA-Z0-9\s]+$/;
+    if (!regex.test(taskTitle)) {
+      regexMessage.textContent = "doit entrer un titre valide";
+      regexMessage.style.color = "red";
+      return;
+    }
+     regexMessage.textContent = "Tâche ajoutée avec succès !";
+    regexMessage.style.color = "green";
     if (!taskTitle) return;
 
     const newTask = {
@@ -176,9 +186,9 @@ export const addTask = () => {
       completed: false,
     };
 
-    tasks.push(newTask); // update data
+    tasks.push(newTask);
     // console.log(tasks);
-    displayTasks(); // re-render UI
+    // displayTasks();
     taskInput.value = ""; // clear input
   });
 };
