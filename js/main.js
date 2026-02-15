@@ -21,7 +21,6 @@ const goHome = () => {
     ${createFooter()}
 
   `;
-  //   displayTasks("taskList");
   addTask();
   addEvents();
   // use each function for stop or start promodo tasks to promodo pages
@@ -29,12 +28,11 @@ const goHome = () => {
 
   document.getElementById("stopTimer")?.addEventListener("click", stopTimer);
 };
-
 const goProfile = () => {
   container.innerHTML = `
     ${profil()}
     ${createFooter()}
   `;
-  displayTasks("taskList");
+  displayTasks();
   addEvents();
 };

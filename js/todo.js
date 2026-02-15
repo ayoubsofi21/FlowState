@@ -141,7 +141,12 @@
 //   li.textContent = taskTitle;
 // };
 import { startTimer, stopTimer } from "./timer.js";
-import { getTasks } from "./storage.js";
+import {
+  getTasks,
+  addTaskToStorage,
+  removeTaskFromStorage,
+} from "./storage.js";
+
 let tasks = getTasks();
 // const tasks = [
 //   { id: 1, title: "Learn JS", completed: false },
@@ -160,17 +165,38 @@ export const displayTasks = (targetId = "taskList") => {
     li.innerHTML = `
     
       <span class="font-semibold">${task.title}</span>
-      <div class="flex  justify-between items-between gap-5">
-        <button class="start-btn text-green-500">▶️</button>
-        <button class="stop-btn text-red-500">⏹️</button>
-        <button class="delete-btn text-red-500">🗑️</button>
+      <div class="flex justify-between items-center gap-5">
+      <button class="start-btn text-green-500 hover:text-green-600 transition">
+        <i class="fa-solid fa-play"></i>
+      </button>
+
+      <button class="stop-btn text-yellow-500 hover:text-yellow-600 transition">
+        <i class="fa-solid fa-pause"></i>
+      </button>
+
+      <button class="delete-btn text-red-500 hover:text-red-600 transition">
+        <i class="fa-solid fa-trash"></i>
+      </button>
       </div>
+
       `;
     const startBtn = li.querySelector(".start-btn");
     const stopBtn = li.querySelector(".stop-btn");
+    const deleteBtn = li.querySelector(".delete-btn");
+
     startBtn.addEventListener("click", startTimer);
     stopBtn.addEventListener("click", stopTimer);
     taskList.appendChild(li);
+    deleteBtn.addEventListener("click", () => {
+      // remove from array
+      tasks = tasks.filter((t) => t.id !== task.id);
+
+      // remove from localStorage
+      removeTaskFromStorage(task.id);
+
+      // refresh UI
+      displayTasks(targetId);
+    });
   });
 };
 // <span>${task.completed ? "✅" : "⏳"}</span>
@@ -200,11 +226,9 @@ export const addTask = () => {
     };
 
     tasks.push(newTask);
-    // addTaskToStorage(newTask); // <-- Sauvegarde dans localStorage
-    displayTasks();
+    addTaskToStorage(newTask); // <-- Sauvegarde dans localStorage
     // console.log(tasks);
-    // displayTasks();
-    taskInput.value = ""; // clear input
+    taskInput.value = "";
   });
 };
 
